@@ -29,6 +29,6 @@ class Generator:
         return values
 
 if __name__ == "__main__":
-    oper = TrigonomicOperations(10)
+    oper = TrigonomicOperations(0.1)
     generator = Generator(oper)
     print(generator.generate(5))

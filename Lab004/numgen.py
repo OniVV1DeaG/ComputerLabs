@@ -9,4 +9,4 @@ class GeoGenerator:
 
 if __name__ == "__main__":
     gg = GeoGenerator()
-    print(gg.generate(2, 20))
+    print(gg.generate(0.1, 2))
