@@ -55,8 +55,8 @@ def customer_generator(env, system, gen, arrival_time):
 
 if __name__ == "__main__":
     env = simpy.Environment()
-    system_capacity = 4
-    arrival_rate = 0.5
+    system_capacity = None
+    arrival_rate = 1
     gg = GeoGenerator()
 
     oper = TrigonomicOperations(0.1)
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
     system = System(env, system_capacity, generator, 4, service_time= 3)
     env.process(customer_generator(env, system, generator, arrival_rate))
-    env.run(until=3000)
+    env.run(until=2000)
 
     p_reject, p_accept, avg = system.get_values()
     print(f'Вероятность отказа: {p_reject:.2f}, вероятность обслуживания: {p_accept:.2f}, средняя длина очереди: {avg}')
