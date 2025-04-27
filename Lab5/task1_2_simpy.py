@@ -1,6 +1,6 @@
 import simpy
-from Lab4.numgen import GammaGenerator
-from Lab4.generator import TrigonomicOperations, Generator
+from Lab004.numgen import GeoGenerator
+from Lab004.generator import TrigonomicOperations, Generator
 
 class System:
     def __init__(self, env, capacity, generator, num_serv, service_time):
@@ -55,14 +55,14 @@ def customer_generator(env, system, gen, arrival_time):
 
 if __name__ == "__main__":
     env = simpy.Environment()
-    system_capacity = 3
-    arrival_rate = 0.7
-    gg = GammaGenerator(1 / arrival_rate)
+    system_capacity = 4
+    arrival_rate = 0.5
+    gg = GeoGenerator()
 
-    oper = TrigonomicOperations(10, -1)
+    oper = TrigonomicOperations(0.1)
     generator = Generator(oper)
 
-    system = System(env, system_capacity, generator, 5, service_time= 1.25)
+    system = System(env, system_capacity, generator, 4, service_time= 3)
     env.process(customer_generator(env, system, generator, arrival_rate))
     env.run(until=3000)
 

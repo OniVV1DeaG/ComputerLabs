@@ -1,5 +1,5 @@
-from Lab4.numgen import GammaGenerator
-from Lab4.generator import TrigonomicOperations, Generator
+from Lab004.numgen import GeoGenerator
+from Lab004.generator import TrigonomicOperations, Generator
 
 class Customer:
     def __init__(self, arrival_time):
@@ -85,13 +85,13 @@ class LimitedSingleServer:
         return p_reject, p_accept, lcmo, tcmo
 
 if __name__ == "__main__":
-    lambda_value = 0.7
-    limit = 3
-    service_time = 1.25
-    max_time = 3000
-    oper = TrigonomicOperations(10, -1)
+    lambda_value = 0.8
+    limit = 1
+    service_time = 1.2
+    max_time = 2000
+    oper = TrigonomicOperations(0.1)
     generator = Generator(oper)
-    gg = GammaGenerator(1 / lambda_value)
+    gg = GeoGenerator()
     server = LimitedSingleServer(limit, generator, service_time, lambda_value)
     server.simulate_system(max_time)
     p_reject, p_accept = server.get_values()

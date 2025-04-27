@@ -23,7 +23,7 @@ import task1_python
 import task2_python
 import task1_2_simpy
 import Lab5.task2_python
-from Lab4.generator import TrigonomicOperations, Generator
+from Lab004.generator import TrigonomicOperations, Generator
 
 
 class AlertBox(QDialog):
@@ -242,7 +242,7 @@ class Ui_Form(object):
             return
         self.tableWidget.setRowCount(3)
 
-        oper = TrigonomicOperations(10, -1)
+        oper = TrigonomicOperations(0.1)
         generator = Generator(oper)
         server = task1_python.LimitedSingleServer(limit, generator, t, l)
         server.simulate_system(to)
@@ -251,7 +251,7 @@ class Ui_Form(object):
         self.update_single_table(self.tableWidget, ['Кастомный', p_reject, p_accept], 0)
 
         env = simpy.Environment()
-        oper = TrigonomicOperations(10, -1)
+        oper = TrigonomicOperations(0.1)
         generator = Generator(oper)
         system = task1_2_simpy.System(env, limit, generator, 1, service_time=to)
         env.process(task1_2_simpy.customer_generator(env, system, generator, l))
@@ -295,7 +295,7 @@ class Ui_Form(object):
         self.update_single_table(self.tableWidget_2, ['Кастомный', p_reject, p_accept, lq], 0)
 
         env = simpy.Environment()
-        oper = TrigonomicOperations(10, -1)
+        oper = TrigonomicOperations(0.1)
         generator = Generator(oper)
         system = task1_2_simpy.System(env, limit, generator, servers, service_time=to)
         env.process(task1_2_simpy.customer_generator(env, system, generator, l))

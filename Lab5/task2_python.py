@@ -139,11 +139,11 @@ class System:
         return p_reject, 1 - p_reject, lq
 
 if __name__ == "__main__":
-    num_servers = 5
-    max_queue_length = 3
-    total_time = 3000
-    arrival_time = 0.8
-    service_time = 1
+    num_servers = 4
+    max_queue_length = None
+    total_time = 2000
+    arrival_time = 1
+    service_time = 3
 
     system = System(num_servers, max_queue_length, arrival_time, service_time, True)
     system.simulate(total_time)
